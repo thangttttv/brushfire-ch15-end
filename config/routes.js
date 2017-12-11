@@ -46,6 +46,9 @@ module.exports.routes = {
   'POST /videos/:id/down': 'VideoController.reorderVideoDown',
   'PUT /videos/:id': 'TutorialController.updateVideo',
 
+  'GET /webhook': 'WebHookController.index',
+  'POST /webhook': 'WebHookController.process',
+
   /*************************************************************
   * Server Rendered HTML Page Endpoints                        *
   *************************************************************/
@@ -78,6 +81,7 @@ module.exports.routes = {
     controller: 'PageController',
     action: 'profile',
     skipAssets: true
-  }
+  },
+
   // 'GET /:username': 'PageController.profile',
 };

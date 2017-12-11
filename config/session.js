@@ -41,7 +41,7 @@ module.exports.session = {
   * session store that can be shared across multiple Sails.js servers        *
   ***************************************************************************/
 
-  adapter: 'redis',
+ // adapter: 'redis',
 
   /***************************************************************************
   *                                                                          *
@@ -72,7 +72,9 @@ module.exports.session = {
   // port: 27017,
   // db: 'sails',
   // collection: 'sessions',
-
+  adapter: 'mongo',
+  url: 'mongodb://localhost:27017/sessions',
+  collection: 'sessions',
   /***************************************************************************
   *                                                                          *
   * Optional Values:                                                         *
