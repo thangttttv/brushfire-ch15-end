@@ -5,30 +5,51 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+const util = require('util')
+var request = require('request');
+
 module.exports = {
 
     index: function(req, res) {
-    if (req.query['hub.verify_token'] === 'anh_hoang_dep_trai_vo_doi') {
-        res.send(req.query['hub.challenge']);
-    }
-    res.send('Error, wrong validation token');
+        if (req.query['hub.verify_token'] === 'anh_hoang_dep_trai_vo_doi') {
+            res.send(req.query['hub.challenge']);
+        }
+        res.send('Error, wrong validation token');
     },
 
-	process: function(req, res) {
+    process: function(req, res) {
+        console.log('121');
         var entries = req.body.entry;
-        for (var entry in entries) {
+        // console.log(util.inspect(entries, false, null))
+
+        for (var i in entries) {
+            var entry = entries[i];
             var messaging = entry.messaging;
-            for (var message in messaging) {
+            console.log(messaging);
+            //
+            messaging.forEach(function(message){
                 var senderId = message.sender.id;
                 if (message.message) {
                     // If user send text
                     if (message.message.text) {
                         var text = message.message.text;
                         console.log(text); // In tin nhắn người dùng
-                        sendMessage(senderId, "Tui là bot đây: " + text);
+                        this.sendMessage(senderId, "Tui là bot đây: " + text);
                     }
                 }
-            }
+            } )
+
+           /* for (var message of messaging) {
+                var senderId = message.sender.id;
+                if (message.message) {
+                    // If user send text
+                    if (message.message.text) {
+                        var text = message.message.text;
+                        console.log(text); // In tin nhắn người dùng
+                        this.sendMessage(senderId, "Tui là bot đây: " + text);
+                    }
+                }
+            }*/
         }
 
         res.status(200).send("OK");
@@ -36,21 +57,21 @@ module.exports = {
 
     // Gửi thông tin tới REST API để trả lời
     sendMessage: function(senderId, message) {
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {
-            access_token: "EAACEdEose0cBAPZAG9FJLZCUvdaVn8IMn6iUeZBx5NZBpkBlpkcVniUGnNdxPrnPYHUfxQutcAVDP0ZCDifG7lVZBYlror4B7m2DpYObb0ZCtvgAAdn748R1MAtJYS28vH6BMYiCqCFCJMnQgFN8Lp3lQxfEzcji4vqcFiieD3xggY0B6aNKx3D9iWQHhaLhXyovm1NDn9KJQZDZD",
-        },
-        method: 'POST',
-        json: {
-            recipient: {
-                id: senderId
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {
+                access_token: "EAACEdEose0cBAKjRLV4XFRHiv2gOqVXVJX5EMBslQl6L0ZCWFzbbQCyic6ufpEpV0R6V042xa0Fq02j9wn7YxPCt14jY1U4PfHMYOxsQzk78CTvAqU1ZCKIr4Dj9n9y08tFiBOBKAF5XHXtVY9N2sLdEZBnsin6KWc3nuNyW5rOdsTYpmLmVJiZBaobZBZAWfDK3oOLfQu5wZDZD",
             },
-            message: {
-                text: message
-            },
-        }
-    });
+            method: 'POST',
+            json: {
+                recipient: {
+                    id: senderId
+                },
+                message: {
+                    text: message
+                },
+            }
+        });
     }
 };
 

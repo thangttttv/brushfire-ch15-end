@@ -72,7 +72,8 @@ module.exports.session = {
   // port: 27017,
   // db: 'sails',
   // collection: 'sessions',
-  adapter: 'mongo',
+ // adapter: 'mongo',
+  adapter: 'memory',
   url: 'mongodb://localhost:27017/sessions',
   collection: 'sessions',
   /***************************************************************************
