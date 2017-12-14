@@ -26,20 +26,13 @@ module.exports = {
             var entry = entries[i];
             var messaging = entry.messaging;
             console.log(messaging);
-            //
-            messaging.forEach(function(message){
-                var senderId = message.sender.id;
-                if (message.message) {
-                    // If user send text
-                    if (message.message.text) {
-                        var text = message.message.text;
-                        console.log(text); // In tin nhắn người dùng
-                        this.sendMessage(senderId, "Tui là bot đây: " + text);
-                    }
-                }
-            } )
+            console.log(messaging[0]);
+            console.log(messaging[0].sender.id);
 
-           /* for (var message of messaging) {
+            //   for (var message of messaging) {
+            for (var j in messaging) {
+                var message = messaging[j];
+                console.log(message);
                 var senderId = message.sender.id;
                 if (message.message) {
                     // If user send text
@@ -49,7 +42,7 @@ module.exports = {
                         this.sendMessage(senderId, "Tui là bot đây: " + text);
                     }
                 }
-            }*/
+            }
         }
 
         res.status(200).send("OK");
@@ -60,7 +53,7 @@ module.exports = {
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {
-                access_token: "EAACEdEose0cBAKjRLV4XFRHiv2gOqVXVJX5EMBslQl6L0ZCWFzbbQCyic6ufpEpV0R6V042xa0Fq02j9wn7YxPCt14jY1U4PfHMYOxsQzk78CTvAqU1ZCKIr4Dj9n9y08tFiBOBKAF5XHXtVY9N2sLdEZBnsin6KWc3nuNyW5rOdsTYpmLmVJiZBaobZBZAWfDK3oOLfQu5wZDZD",
+                access_token: "EAACEdEose0cBALZBBfzk3ZAU8Kw62ct2wLHaaPWK6MVZCilGrQb32QuNmKy5QVnOw0VZBTzaPaA8x4kNIAsrGLluZBPT0HOYPgCVU8ASdNFQc8sZCcByOwjxjd3aVdvR5AlRtDnZCb5ZAnGaP3Gy9lZCw3msHln1Di8UdZBZBqzZCRTGMdeY1pMMdha44LtuPbi1BXrIC78BDJS5SAZDZD",
             },
             method: 'POST',
             json: {
