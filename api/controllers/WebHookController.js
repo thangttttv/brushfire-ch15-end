@@ -123,7 +123,7 @@ module.exports = {
         }
     };
 
-    callSendAPI(messageData);
+    this.callSendAPI(messageData);
     },
 
     /*
