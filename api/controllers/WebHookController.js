@@ -7,6 +7,7 @@
 
 const util = require('util')
 var request = require('request');
+var token_page = "EAACEdEose0cBAFcuIcr6xZCdSBGqMM5NDEZCqr38hJF4PqvOlnt3xmFp8ZAHacLWdKnPtiItVaoxcjwZCsEymYr1AjOLOpUNLdKC1FPG4wDkoNHvKlZC6XjKXTS3ZBZBhUZAN3yKSawZAtmLTfuPpyCPwcvxyK4q5ajggR192b441G2OeH5oQKDyVbVug5qgGe5ntnp4VDJ4IBQZDZD";
 
 module.exports = {
 
@@ -39,7 +40,7 @@ module.exports = {
                     if (message.message.text) {
                         var text = message.message.text;
                         console.log(text); // In tin nhắn người dùng
-                        this.sendMessage(senderId, "Tui là bot đây: " + text);
+                       // this.sendMessage(senderId, "Tui là bot đây: " + text);
                         this.sendQuickReply(senderId);
                     }
                 }
@@ -54,7 +55,7 @@ module.exports = {
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {
-                access_token: "EAACEdEose0cBAM1BNFMuhGIEyGQbULna4TKWNgmZChhUC664Ez5cJdXOiS09VknXhCWU6C7GLsZAmL8142fP5xyOl0cOZC7VCkfWjSVky34R0c94WrNCNQ3Pyr7T5HXRVuMOrWHuuU0yoWz09PPid5HPrLsxkkW0FjLhXfZBMTjEIIGTZCK8cApZCpvYUwZCSdL7SnVZCBMXYgZDZD",
+                access_token: token_page,
             },
             method: 'POST',
             json: {
@@ -110,7 +111,7 @@ module.exports = {
     callSendAPI :function(messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: { access_token: "EAACEdEose0cBAM1BNFMuhGIEyGQbULna4TKWNgmZChhUC664Ez5cJdXOiS09VknXhCWU6C7GLsZAmL8142fP5xyOl0cOZC7VCkfWjSVky34R0c94WrNCNQ3Pyr7T5HXRVuMOrWHuuU0yoWz09PPid5HPrLsxkkW0FjLhXfZBMTjEIIGTZCK8cApZCpvYUwZCSdL7SnVZCBMXYgZDZD" },
+        qs: { access_token: token_page},
         method: 'POST',
         json: messageData
 
