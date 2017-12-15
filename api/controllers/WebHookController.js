@@ -150,7 +150,7 @@ module.exports = {
                         title: "rift",
                         subtitle: "Next-generation virtual reality",
                         item_url: "https://www.oculus.com/en-us/rift/",
-                        image_url: SERVER_URL + "/assets/rift.png",
+                        image_url: "http://img.v96.bdpcdn.net/Assets/Media/2017/12/15/70/bailly3.jpg",
                         buttons: [{
                             type: "web_url",
                             url: "https://www.oculus.com/en-us/rift/",
@@ -164,7 +164,7 @@ module.exports = {
                         title: "touch",
                         subtitle: "Your Hands, Now in VR",
                         item_url: "https://www.oculus.com/en-us/touch/",
-                        image_url: SERVER_URL + "/assets/touch.png",
+                        image_url: "http://img.v96.bdpcdn.net/Assets/Media/2017/12/15/70/bailly3.jpg",
                         buttons: [{
                             type: "web_url",
                             url: "https://www.oculus.com/en-us/touch/",
