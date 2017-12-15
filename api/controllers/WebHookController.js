@@ -53,7 +53,7 @@ module.exports = {
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {
-                access_token: "EAACEdEose0cBALZBBfzk3ZAU8Kw62ct2wLHaaPWK6MVZCilGrQb32QuNmKy5QVnOw0VZBTzaPaA8x4kNIAsrGLluZBPT0HOYPgCVU8ASdNFQc8sZCcByOwjxjd3aVdvR5AlRtDnZCb5ZAnGaP3Gy9lZCw3msHln1Di8UdZBZBqzZCRTGMdeY1pMMdha44LtuPbi1BXrIC78BDJS5SAZDZD",
+                access_token: "EAACEdEose0cBAM1BNFMuhGIEyGQbULna4TKWNgmZChhUC664Ez5cJdXOiS09VknXhCWU6C7GLsZAmL8142fP5xyOl0cOZC7VCkfWjSVky34R0c94WrNCNQ3Pyr7T5HXRVuMOrWHuuU0yoWz09PPid5HPrLsxkkW0FjLhXfZBMTjEIIGTZCK8cApZCpvYUwZCSdL7SnVZCBMXYgZDZD",
             },
             method: 'POST',
             json: {
