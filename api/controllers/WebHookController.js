@@ -43,9 +43,9 @@ module.exports = {
                        // this.sendMessage(senderId, "Tui là bot đây: " + text);
                        // this.sendQuickReply(senderId);
                        // this.sendImageMessage(senderId);
-                        this.sendAudioMessage(senderId);
-                        this.sendFileMessage(senderId);
-                        this.sendButtonMessage(senderId);
+                       // this.sendAudioMessage(senderId);
+                       // this.sendFileMessage(senderId);
+                      //  this.sendButtonMessage(senderId);
                         this.sendVideoMessage(senderId);
                     }
                 }
