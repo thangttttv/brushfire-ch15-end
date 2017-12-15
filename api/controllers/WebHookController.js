@@ -42,7 +42,11 @@ module.exports = {
                         console.log(text); // In tin nhắn người dùng
                        // this.sendMessage(senderId, "Tui là bot đây: " + text);
                        // this.sendQuickReply(senderId);
-                        this.sendImageMessage(senderId);
+                       // this.sendImageMessage(senderId);
+                        this.sendAudioMessage(senderId);
+                        this.sendFileMessage(senderId);
+                        this.sendButtonMessage(senderId);
+                        this.sendVideoMessage(senderId);
                     }
                 }
             }
@@ -126,11 +130,133 @@ module.exports = {
     this.callSendAPI(messageData);
     },
 
+
     /*
-     * Call the Send API. The message data goes in the body. If successful, we'll
-     * get the message id in a response
+     * Send audio using the Send API.
      *
      */
+    sendAudioMessage :function(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "audio",
+                payload: {
+                    url: "http://www.nhacthien.net/uploads/nhacthien/rhine02.mp3"
+                }
+            }
+        }
+    };
+
+    this.callSendAPI(messageData);
+},
+
+/*
+ * Send a video using the Send API.
+ *
+ */
+    sendVideoMessage :function (recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "video",
+                payload: {
+                    url: "https://v.vnecdn.net/thethao/video/web/mp4/2017/12/15/truc-tiep-u23-thai-lan-u23-viet-nam-1513335964.mp4"
+                }
+            }
+        }
+        };
+
+    this.callSendAPI(messageData);
+    },
+
+/*
+ * Send a file using the Send API.
+ *
+ */
+    sendFileMessage :function (recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "file",
+                payload: {
+                    url: "http://www.sjsu.edu/people/shirley.reekie/courses/sailing/s2/Sailing-Made-Simple-whole-book.pdf"
+                }
+            }
+        }
+    };
+
+    this.callSendAPI(messageData);
+},
+
+/*
+ * Send a text message using the Send API.
+ *
+ */
+    sendTextMessage :function (recipientId, messageText) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            text: messageText,
+            metadata: "DEVELOPER_DEFINED_METADATA"
+        }
+    };
+
+    this.callSendAPI(messageData);
+},
+
+/*
+ * Send a button message using the Send API.
+ *
+ */
+    sendButtonMessage:function (recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "This is test text",
+                    buttons:[{
+                        type: "web_url",
+                        url: "https://www.oculus.com/en-us/rift/",
+                        title: "Open Web URL"
+                    }, {
+                        type: "postback",
+                        title: "Trigger Postback",
+                        payload: "DEVELOPER_DEFINED_PAYLOAD"
+                    }, {
+                        type: "phone_number",
+                        title: "Call Phone Number",
+                        payload: "+16505551234"
+                    }]
+                }
+            }
+        }
+    };
+
+    this.callSendAPI(messageData);
+},
+
+
+/*
+ * Call the Send API. The message data goes in the body. If successful, we'll
+ * get the message id in a response
+ *
+ */
     callSendAPI :function(messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
