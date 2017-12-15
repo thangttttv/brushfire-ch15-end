@@ -40,7 +40,7 @@ module.exports = {
                         var text = message.message.text;
                         console.log(text); // In tin nhắn người dùng
                         this.sendMessage(senderId, "Tui là bot đây: " + text);
-                        sendQuickReply(senderId);
+                        this.sendQuickReply(senderId);
                     }
                 }
             }
@@ -99,7 +99,7 @@ module.exports = {
         }
     };
 
-    callSendAPI(messageData);
+    this.callSendAPI(messageData);
     },
 
     /*
