@@ -41,7 +41,8 @@ module.exports = {
                         var text = message.message.text;
                         console.log(text); // In tin nhắn người dùng
                        // this.sendMessage(senderId, "Tui là bot đây: " + text);
-                        this.sendQuickReply(senderId);
+                       // this.sendQuickReply(senderId);
+                        this.sendImageMessage(senderId);
                     }
                 }
             }
@@ -101,6 +102,28 @@ module.exports = {
     };
 
     this.callSendAPI(messageData);
+    },
+
+    /*
+     * Send an image using the Send API.
+     *
+     */
+    sendImageMessage :function(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: "http://img.v96.bdpcdn.net/Assets/Media/2017/12/15/70/bailly3.jpg"
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
     },
 
     /*
