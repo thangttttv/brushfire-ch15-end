@@ -47,13 +47,14 @@ module.exports = {
                        // this.sendFileMessage(senderId);
                       //  this.sendButtonMessage(senderId);
                        // this.sendVideoMessage(senderId);
-                        console.log(text.indexOf("button"));
-                        if(text.indexOf("button"))
+                        console.log("indexoff"+text.indexOf("button"));
+                        if(text.indexOf("button")>=0)
                         {
                             this.sendButtonMessage(senderId);
                         }else{
                             this.sendGenericMessage(senderId);
                         }
+
 
                     }
                 }
