@@ -13,7 +13,7 @@
 module.exports = {
 
   models: {
-    connection: 'productionPostgresqlServer'
+    connection: 'someMysqlServer'
   },
 
   connections: {

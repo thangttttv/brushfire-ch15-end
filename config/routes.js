@@ -48,6 +48,8 @@ module.exports.routes = {
 
   'GET /webhook': 'WebHookController.index',
   'POST /webhook': 'WebHookController.process',
+  'GET /message/1': 'MessageController.index',
+    'GET /message/2': 'MessageController.index1',
 
   /*************************************************************
   * Server Rendered HTML Page Endpoints                        *
@@ -82,6 +84,7 @@ module.exports.routes = {
     action: 'profile',
     skipAssets: true
   },
+
 
   // 'GET /:username': 'PageController.profile',
 };

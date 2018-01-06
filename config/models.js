@@ -18,7 +18,8 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   //connection: 'someMongodbServer',
-  connection: 'localDiskDb',
+ //connection: 'localDiskDb',
+   connection: 'someMysqlServer',
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *
@@ -29,6 +30,9 @@ module.exports.models = {
   ***************************************************************************/
   migrate: 'drop',
 
-  schema: true
+  schema: true,
+
+ //autoCreatedAt: false,
+//autoUpdatedAt: false,
 
 };
