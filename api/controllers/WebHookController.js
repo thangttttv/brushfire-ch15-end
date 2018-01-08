@@ -54,6 +54,27 @@ module.exports = {
                 var message = messaging[j];
                 console.log(message);
                 var senderId = message.sender.id;
+                // check message first send
+                    // true
+                    /*
+                    * - get welcome message
+                    * - send welcome
+                    *
+                    * */
+                MessageLog.findOne({where:{sender_id:senderId}}).exec(function(err,message){
+                    if(message==null){
+                        this.sendTextMessage(senderId,"xin chao ban");
+                    }
+                });
+                // Check keyword
+                    /*
+                        - keyword in
+                        - keyword A And B
+                        - keyword A Not B
+                        - keyword and
+                     */
+                // End default message
+
                 if (message.message) {
                     // If user send text
                     if (message.message.text) {

@@ -28,11 +28,11 @@ module.exports.models = {
   * See http://sailsjs.org/#!/documentation/concepts/ORM/model-settings.html  *
   *                                                                          *
   ***************************************************************************/
-  migrate: 'drop',
+  migrate: 'safe',
 
   schema: true,
 
- //autoCreatedAt: false,
-//autoUpdatedAt: false,
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
 
 };

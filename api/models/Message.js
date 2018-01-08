@@ -7,16 +7,47 @@
 
 module.exports = {
 
-  attributes: {
-    page_id : { type: 'integer' },
+      attributes: {
+            id:{
+              type:'primary_key',
+            },
+            page_id:{
+                type:'integer',
+            },
+            title:{
+                type:'string',
+            },
 
-    title: {
-        type: 'string'
-      }
+            type:{
+                  type:'string',
+            },
+            sent:{
+                type:'integer',
+            },
+            delivered:{
+                type:'integer',
+            },
+            opened:{
+                type:'integer',
+            },
+            clicked:{
+                type:'integer',
+            },
+            created_at:{
+                type:'timestamp',
+            },
+            updated_at:{
+                type:'timestamp',
+            },
+      },
+      tableName: 'messages',
 
-  },
+      getMessageWelcome: function(page_id){
 
-  tableName: 'messages'
+         return   this.findOne({ where: { page_id: page_id, type:'welcome' }, sort: 'id desc'}).exec(function(err, message){
+                console.log("data:",message.toObject());
 
+            });
+        }
 };
 
