@@ -11,6 +11,9 @@ module.exports = {
         id:{
             type:'primary_key',
         },
+        page_id:{
+            type:'integer',
+        },
         sender_id:{
             type:'string',
         },
