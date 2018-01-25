@@ -9,7 +9,7 @@ var request = require('request');
 module.exports = {
 
     // Gửi thông tin tới REST API để trả lời
-    sendMessage: function(senderId, message) {
+    sendMessageToFacebook: function(senderId, message) {
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {
@@ -23,6 +23,27 @@ module.exports = {
                 message: {
                     text: message
                 },
+            }
+        });
+    },
+
+    sendMessageById: function(messageId,recipientId){
+        Message.findById(messageId).exec(function(err,message){
+            if (err) {
+                sails.log.error(err);
+            }else{
+                MessageItem.findByMessage_id().exec(function(err,items){
+                    _.each(items, function(item) {
+                        switch(item.type){
+                            case 'text':
+                                var content = JSON.parse(item.message);
+                                this.sendTextMessage(recipientId,content.text);
+                                break;
+                            default :
+                                break;
+                        };
+                    });
+                });
             }
         });
     },

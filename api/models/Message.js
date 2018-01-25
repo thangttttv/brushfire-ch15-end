@@ -43,11 +43,14 @@ module.exports = {
       tableName: 'messages',
 
       getMessageWelcome: function(page_id){
-
-         return   this.findOne({ where: { page_id: page_id, type:'welcome' }, sort: 'id desc'}).exec(function(err, message){
-                console.log("data:",message.toObject());
-
-            });
+            this.findOne({ where: { page_id: page_id, type:'welcome' }, sort: 'id desc'}).exec(function(err, message){
+               if (err) {
+                    return err;
+               }else{
+                   sails.log(message);
+                   return message;
+               }
+             });
         }
 };
 

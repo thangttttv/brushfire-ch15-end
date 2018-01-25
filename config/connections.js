@@ -49,7 +49,7 @@ module.exports.connections = {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'tunchat_3'
+    database: 'c9'
   },
 
   /***************************************************************************

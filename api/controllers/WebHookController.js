@@ -7,7 +7,6 @@
 
 const util = require('util')
 var request = require('request');
-var token_page = "EAACOHQOP7HgBAIYAIK7U6GUZAzDUySHkzKncGkS6uuCU2cUA0RKN1r9VnpA2ZBWwOojWilWYcffb4z090GumztNelsnCHcjYDKg8LI14gdwZCZCeqS46ZCZAnNHZB19ZAS2tdJmhb4nzaEYPFFrLSm19UXHlzYpy0cDxD5fP9v3Wzgbj4XJYZBgaP";
 
 module.exports = {
 
@@ -21,8 +20,7 @@ module.exports = {
     process: function(req, res) {
         console.log('121');
         var entries = req.body.entry;
-        // console.log(util.inspect(entries, false, null))
-
+        var page_id = 1;
         request({
             url: 'https://graph.facebook.com/v2.6/426390950873704?fields=access_token',
             qs: {
@@ -66,8 +64,13 @@ module.exports = {
                 if (message.message.text){
                     MessageLog.findOne({where:{sender_id:senderId}}).exec(function(err,message){
                         if(message==null){
+                            sails.log('Message log null send ');
                             /* */
-                            FacebookMessageService.sendTextMessage(senderId,"xin chao ban");
+                            //FacebookMessageService.sendTextMessage(senderId,"xin chao ban");
+                            Message.getMessageWelcome(page_id).then(function(mesWelcome) {
+                                FacebookMessageService.sendMessageById(mesWelcome.id,senderId);
+                            });
+
                             MessageLog.create({page_id:1,sender_id:senderId,recipient_id:recipientId,message:message.message,sent_at:timestamp}).exec
                                 (function (err, messageLog){
                                     if (err) {
